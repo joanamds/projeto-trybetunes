@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
-// import Loading from './Loading';
+import Loading from './Loading';
 
 class Login extends Component {
   constructor() {
@@ -8,6 +9,8 @@ class Login extends Component {
 
     this.state = {
       loginItem: '',
+      isLoading: false,
+      isDisabled: true,
     };
   }
 
@@ -15,18 +18,37 @@ class Login extends Component {
     const loginValue = event.target.value;
     this.setState({
       loginItem: loginValue,
-    });
+    }, () => this.validateLogin());
   };
 
   validateLogin = () => {
     const { loginItem } = this.state;
     const minLength = 3;
     const validLogin = loginItem.length >= minLength;
-    return validLogin;
+    this.setState({
+      isDisabled: !validLogin,
+    });
+  };
+
+  onButtonClick = async () => {
+    const { loginItem } = this.state;
+    const { history: { push } } = this.props;
+    this.setState(
+      { isLoading: true },
+      async () => {
+        const response = await createUser({ name: loginItem });
+        const { name } = response;
+        this.setState({
+          loginItem: name,
+          isLoading: false,
+        }, () => push('/search'));
+      },
+    );
   };
 
   render() {
-    const { loginItem } = this.state;
+    const { isLoading, isDisabled } = this.state;
+    if (isLoading) return <Loading />;
     return (
       <div data-testid="page-login">
         <h1>Login</h1>
@@ -37,9 +59,9 @@ class Login extends Component {
         />
         <button
           data-testid="login-submit-button"
-          type="submit"
-          onClick={ createUser({ name: loginItem }) }
-          disabled={ !this.validateLogin() }
+          type="button"
+          onClick={ this.onButtonClick }
+          disabled={ isDisabled }
         >
           Entrar
         </button>
@@ -47,5 +69,11 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default Login;
