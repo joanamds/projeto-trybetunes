@@ -25,7 +25,7 @@ class Profile extends Component {
       <div data-testid="page-profile">
         <Header data-testid="header-component" />
         <h1>Profile</h1>
-        <Link to="edit">Editar perfil</Link>
+        <Link to="/profile/edit">Editar perfil</Link>
       </div>
     );
   }

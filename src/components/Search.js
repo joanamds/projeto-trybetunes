@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from './Header';
+import Loading from './Loading';
+import AlbumCard from './AlbumCard';
 
 class Search extends Component {
   constructor() {
@@ -8,6 +11,8 @@ class Search extends Component {
     this.state = {
       isDisabled: true,
       searchItem: '',
+      isLoading: false,
+      albumsList: [],
     };
   }
 
@@ -27,8 +32,25 @@ class Search extends Component {
     });
   };
 
+  onSearchClick = async () => {
+    const { searchItem } = this.state;
+    this.setState(
+      { isLoading: true },
+      async () => {
+        const response = await searchAlbumsAPI(searchItem);
+        const { artistName } = response;
+        this.setState({
+          searchItem: artistName,
+          isLoading: false,
+          albumsList: response,
+        });
+        console.log(response);
+      },
+    );
+  };
+
   render() {
-    const { isDisabled } = this.state;
+    const { isDisabled, isLoading, albumsList } = this.state;
     return (
       <div data-testid="page-search">
         <Header data-testid="header-component" />
@@ -42,9 +64,26 @@ class Search extends Component {
           data-testid="search-artist-button"
           type="button"
           disabled={ isDisabled }
+          onClick={ this.onSearchClick }
         >
           Procurar
         </button>
+        <p>
+          {
+            isLoading
+              ? <Loading />
+              : (albumsList.map((album) => (
+                <AlbumCard
+                  key={ album.collectionId }
+                  artistId={ album.artistId }
+                  artistName={ album.artistName }
+                  artworkUrl100={ album.artworkUrl100 }
+                  collectionId={ album.collectionId }
+                  collectionName={ album.collectionName }
+                />
+              )))
+          }
+        </p>
       </div>
     );
   }
