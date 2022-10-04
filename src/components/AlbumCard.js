@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class AlbumCard extends Component {
@@ -7,15 +8,18 @@ class AlbumCard extends Component {
       collectionName, artworkUrl100 } = this.props;
 
     return (
-      <div className={ collectionId }>
+      <Link
+        to={ `/album/${collectionId}` }
+        data-testid={ `link-to-album-${collectionId}` }
+      >
         <img src={ artworkUrl100 } alt={ collectionName } />
-        <h1>
+        <h2>
           { collectionName }
-        </h1>
+        </h2>
         <p className={ artistId }>
           { artistName }
         </p>
-      </div>
+      </Link>
     );
   }
 }

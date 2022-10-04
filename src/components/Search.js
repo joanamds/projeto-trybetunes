@@ -13,6 +13,7 @@ class Search extends Component {
       searchItem: '',
       isLoading: false,
       albumsList: [],
+      searchMessage: '',
     };
   }
 
@@ -34,23 +35,18 @@ class Search extends Component {
 
   onSearchClick = async () => {
     const { searchItem } = this.state;
-    this.setState(
-      { isLoading: true },
-      async () => {
-        const response = await searchAlbumsAPI(searchItem);
-        const { artistName } = response;
-        this.setState({
-          searchItem: artistName,
-          isLoading: false,
-          albumsList: response,
-        });
-        console.log(response);
-      },
-    );
+    this.setState({ isLoading: true });
+    const response = await searchAlbumsAPI(searchItem);
+    this.setState({
+      isLoading: false,
+      albumsList: response,
+      searchMessage: `Resultado de álbuns de: ${searchItem}`,
+    });
   };
 
   render() {
-    const { isDisabled, isLoading, albumsList } = this.state;
+    const { isDisabled, isLoading, albumsList, searchMessage } = this.state;
+    if (isLoading) return <Loading />;
     return (
       <div data-testid="page-search">
         <Header data-testid="header-component" />
@@ -68,22 +64,28 @@ class Search extends Component {
         >
           Procurar
         </button>
-        <p>
+        <div className="album-list">
           {
-            isLoading
-              ? <Loading />
-              : (albumsList.map((album) => (
-                <AlbumCard
-                  key={ album.collectionId }
-                  artistId={ album.artistId }
-                  artistName={ album.artistName }
-                  artworkUrl100={ album.artworkUrl100 }
-                  collectionId={ album.collectionId }
-                  collectionName={ album.collectionName }
-                />
-              )))
+            albumsList.length === 0
+              ? <h2>Nenhum álbum foi encontrado</h2>
+              : (
+                <div>
+                  <h3>{ searchMessage }</h3>
+                  {
+                    albumsList.map((album) => (
+                      <AlbumCard
+                        key={ album.collectionId }
+                        artistId={ album.artistId }
+                        artistName={ album.artistName }
+                        artworkUrl100={ album.artworkUrl100 }
+                        collectionId={ album.collectionId }
+                        collectionName={ album.collectionName }
+                      />
+                    ))
+                  }
+                </div>)
           }
-        </p>
+        </div>
       </div>
     );
   }
