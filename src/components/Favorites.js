@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header';
 import Loading from './Loading';
+import Header from './Header';
 
 class Favorites extends Component {
   constructor() {
@@ -19,17 +19,12 @@ class Favorites extends Component {
 
   render() {
     const { isLoading } = this.state;
+    if (isLoading) return <Loading />;
     return (
-      <>
-        <Header />
-        <div data-testid="page-favorites">
-          {
-            isLoading
-              ? <Loading />
-              : <h1>Favorites</h1>
-          }
-        </div>
-      </>
+      <div data-testid="page-favorites">
+        <Header data-testid="header-component" />
+        <h1>Favorites</h1>
+      </div>
     );
   }
 }

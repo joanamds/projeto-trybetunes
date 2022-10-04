@@ -4,12 +4,10 @@ import Header from './Header';
 class ProfileEdit extends Component {
   render() {
     return (
-      <>
+      <div data-testid="page-profile-edit">
         <Header />
-        <div data-testid="page-profile-edit">
-          <h1>ProfileEdit</h1>
-        </div>
-      </>
+        <h1>ProfileEdit</h1>
+      </div>
     );
   }
 }

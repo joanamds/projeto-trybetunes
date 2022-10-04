@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header';
 import Loading from './Loading';
+import Header from './Header';
 
 class Search extends Component {
   constructor() {
@@ -19,17 +19,12 @@ class Search extends Component {
 
   render() {
     const { isLoading } = this.state;
+    if (isLoading) return <Loading />;
     return (
-      <>
+      <div data-testid="page-search">
         <Header />
-        <div data-testid="page-search">
-          {
-            isLoading
-              ? <Loading />
-              : <h1>Search</h1>
-          }
-        </div>
-      </>
+        <h1>Search</h1>
+      </div>
     );
   }
 }

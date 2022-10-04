@@ -19,17 +19,12 @@ class Profile extends Component {
 
   render() {
     const { isLoading } = this.state;
+    if (isLoading) return <Loading />;
     return (
-      <>
-        <Header data-testid="link-to-profile" />
-        <div data-testid="page-profile">
-          {
-            isLoading
-              ? <Loading />
-              : <h1>Profile</h1>
-          }
-        </div>
-      </>
+      <div data-testid="page-profile">
+        <Header data-testid="header-component" />
+        <h1>Profile</h1>
+      </div>
     );
   }
 }
