@@ -22,7 +22,7 @@ class Favorites extends Component {
     if (isLoading) return <Loading />;
     return (
       <div data-testid="page-favorites">
-        <Header data-testid="header-component" />
+        <Header />
         <h1>Favorites</h1>
       </div>
     );

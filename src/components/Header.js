@@ -35,19 +35,19 @@ class Header extends Component {
           { user }
         </p>
         <Link
-          to="search"
+          to="/search"
           data-testid="link-to-search"
         >
           Procurar
         </Link>
         <Link
-          to="favorites"
+          to="/favorites"
           data-testid="link-to-favorites"
         >
           Favoritas
         </Link>
         <Link
-          to="profile"
+          to="/profile"
           data-testid="link-to-profile"
         >
           Perfil
