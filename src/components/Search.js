@@ -67,7 +67,7 @@ class Search extends Component {
         <div className="album-list">
           {
             albumsList.length === 0
-              ? <h2>Nenhum álbum foi encontrado</h2>
+              ? <h3>Nenhum álbum foi encontrado</h3>
               : (
                 <div>
                   <h3>{ searchMessage }</h3>
