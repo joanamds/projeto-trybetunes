@@ -13,7 +13,6 @@ class Album extends Component {
     this.state = {
       contentAlbum: '',
       isLoading: true,
-      isFavorite: false,
       favoritesList: [],
     };
   }
@@ -32,34 +31,31 @@ class Album extends Component {
     });
   };
 
-  // getMusicId = (event) => {
-  //   const { contentAlbum } = this.state;
-  //   const value = event.target.parentNode.firstChild.innerText;
-  //   const findTrack = contentAlbum.find((track) => track.trackName === value);
-  //   this.setState({
-  //     favoriteSong: findTrack.trackId,
-  //   });
-  // };
+  getMusicId = (event) => {
+    const { contentAlbum } = this.state;
+    const value = event.target.parentNode.firstChild.innerText;
+    const findTrack = contentAlbum.find((track) => track.trackName === value);
+    return this.getFavorite(findTrack);
+  };
 
-  getFavorite = async () => {
-    const { favoriteSong } = this.state;
+  getFavorite = async (findTrack) => {
     this.setState(
       { isLoading: true },
       async () => {
-        await addSong(favoriteSong);
-        this.setState({
+        await addSong(findTrack);
+        this.setState((prevState) => ({
           isLoading: false,
-          isFavorite: true,
-        });
+          favoritesList: [...prevState.favoritesList, findTrack],
+        }));
       },
     );
   };
 
   getFavoritesSaved = async () => {
-    await getFavoriteSongs();
-    this.setState((previousState) => ({
-      favoritesList: [...previousState.favoritesList],
-    }));
+    const favorites = await getFavoriteSongs();
+    this.setState({
+      favoritesList: favorites,
+    });
   };
 
   render() {
@@ -90,8 +86,8 @@ class Album extends Component {
                 previewUrl={ track.previewUrl }
                 trackName={ track.trackName }
                 trackId={ track.trackId }
-                checked={ isFavorite }
-                onFavoriteChange={ this.getFavorite }
+                isFavorite={ isFavorite }
+                onFavoriteChange={ this.getMusicId }
               />
             );
           })}
