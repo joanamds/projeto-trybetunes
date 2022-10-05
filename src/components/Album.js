@@ -4,6 +4,7 @@ import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import MusicCard from './MusicCard';
+import { addSong } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   constructor() {
@@ -12,6 +13,8 @@ class Album extends Component {
     this.state = {
       contentAlbum: '',
       isLoading: true,
+      favoriteSong: '',
+      isFavorite: false,
     };
   }
 
@@ -26,11 +29,33 @@ class Album extends Component {
       contentAlbum: response,
       isLoading: false,
     });
-    // console.log(contentAlbum);
+  };
+
+  // getMusicId = (event) => {
+  //   const { contentAlbum } = this.state;
+  //   const value = event.target.parentNode.firstChild.innerText;
+  //   const filterTrack = contentAlbum.find((track) => track.trackName === value);
+  //   this.setState({
+  //     favoriteSong: filterTrack.trackId,
+  //   });
+  // };
+
+  getFavoriteSong = async () => {
+    const { favoriteSong } = this.state;
+    this.setState(
+      { isLoading: true },
+      async () => {
+        await addSong(favoriteSong);
+        this.setState({
+          isLoading: false,
+          isFavorite: true,
+        });
+      },
+    );
   };
 
   render() {
-    const { contentAlbum, isLoading } = this.state;
+    const { contentAlbum, isLoading, isFavorite } = this.state;
     if (isLoading) return <Loading />;
     return (
       <div data-testid="page-album">
@@ -56,6 +81,9 @@ class Album extends Component {
                 key={ track.trackId }
                 previewUrl={ track.previewUrl }
                 trackName={ track.trackName }
+                trackId={ track.trackId }
+                checked={ isFavorite }
+                onFavoriteChange={ this.getFavoriteSong }
               />
             );
           })}
