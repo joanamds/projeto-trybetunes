@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Loading from './Loading';
-import Header from './Header';
+import Loading from '../components/Loading';
+import Header from '../components/Header';
 
 class Favorites extends Component {
   constructor() {

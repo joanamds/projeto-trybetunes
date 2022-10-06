@@ -32,7 +32,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string,
   trackId: PropTypes.number,
   onFavoriteChange: PropTypes.func,
-  isFavorite: PropTypes.bool,
+  checked: PropTypes.func,
 }.isRequired;
 
 export default MusicCard;

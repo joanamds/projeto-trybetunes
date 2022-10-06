@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from './Header';
+import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
-import Loading from './Loading';
-import MusicCard from './MusicCard';
+import Loading from '../components/Loading';
+import MusicCard from '../components/MusicCard';
 import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
@@ -58,8 +58,17 @@ class Album extends Component {
     });
   };
 
+  isChecked = () => {
+    const { favoritesList, contentAlbum } = this.state;
+    const isFavorite = contentAlbum.map((music) => (
+      favoritesList.includes(music)
+    ));
+    console.log(isFavorite);
+    return isFavorite;
+  };
+
   render() {
-    const { contentAlbum, isLoading, isFavorite } = this.state;
+    const { contentAlbum, isLoading } = this.state;
     if (isLoading) return <Loading />;
     return (
       <div data-testid="page-album">
@@ -75,22 +84,19 @@ class Album extends Component {
           { contentAlbum[0].artistName }
         </h2>
         <div className="content-album">
-          { contentAlbum.map((track, index) => {
-            if (index === 0) {
-              return <p />;
-            }
-
-            return (
+          { contentAlbum.map((track, index) => (
+            index !== 0
+            && (
               <MusicCard
                 key={ track.trackId }
                 previewUrl={ track.previewUrl }
                 trackName={ track.trackName }
                 trackId={ track.trackId }
-                isFavorite={ isFavorite }
+                checked={ this.isChecked }
                 onFavoriteChange={ this.getMusicId }
               />
-            );
-          })}
+            )
+          ))}
         </div>
       </div>
     );

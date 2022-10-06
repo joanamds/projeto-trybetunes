@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import Header from './Header';
-import Loading from './Loading';
-import AlbumCard from './AlbumCard';
+import Header from '../components/Header';
+import Loading from '../components/Loading';
+import AlbumCard from '../components/AlbumCard';
 
 class Search extends Component {
   constructor() {
