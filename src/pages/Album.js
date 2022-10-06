@@ -4,14 +4,14 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   constructor() {
     super();
 
     this.state = {
-      contentAlbum: '',
+      contentAlbum: [],
       isLoading: true,
       favoritesList: [],
     };
@@ -39,16 +39,20 @@ class Album extends Component {
   };
 
   getFavorite = async (findTrack) => {
-    this.setState(
-      { isLoading: true },
-      async () => {
-        await addSong(findTrack);
-        this.setState((prevState) => ({
-          isLoading: false,
-          favoritesList: [...prevState.favoritesList, findTrack],
-        }));
-      },
-    );
+    this.setState({ isLoading: true });
+    console.log(this.isChecked(findTrack.trackId));
+    if (this.isChecked(findTrack.trackId)) {
+      await removeSong(findTrack);
+      this.setState({
+        isLoading: false,
+      });
+    } else {
+      await addSong(findTrack);
+      this.setState((prevState) => ({
+        isLoading: false,
+        favoritesList: [...prevState.favoritesList, findTrack],
+      }));
+    }
   };
 
   getFavoritesSaved = async () => {
@@ -58,12 +62,10 @@ class Album extends Component {
     });
   };
 
-  isChecked = () => {
+  isChecked = (trackId) => {
     const { favoritesList, contentAlbum } = this.state;
-    const isFavorite = contentAlbum.map((music) => (
-      favoritesList.includes(music)
-    ));
-    console.log(isFavorite);
+    const findMusic = contentAlbum.find((music) => music.trackId === trackId);
+    const isFavorite = favoritesList.includes(findMusic);
     return isFavorite;
   };
 
@@ -92,7 +94,7 @@ class Album extends Component {
                 previewUrl={ track.previewUrl }
                 trackName={ track.trackName }
                 trackId={ track.trackId }
-                checked={ this.isChecked }
+                isFavorite={ this.isChecked(track.trackId) }
                 onFavoriteChange={ this.getMusicId }
               />
             )
