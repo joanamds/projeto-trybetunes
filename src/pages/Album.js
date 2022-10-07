@@ -39,12 +39,15 @@ class Album extends Component {
   };
 
   getFavorite = async (findTrack) => {
+    const { favoritesList } = this.state;
     this.setState({ isLoading: true });
-    console.log(this.isChecked(findTrack.trackId));
     if (this.isChecked(findTrack.trackId)) {
+      const updateList = favoritesList
+        .filter((music) => music.trackId !== findTrack.trackId);
       await removeSong(findTrack);
       this.setState({
         isLoading: false,
+        favoritesList: updateList,
       });
     } else {
       await addSong(findTrack);
@@ -63,10 +66,9 @@ class Album extends Component {
   };
 
   isChecked = (trackId) => {
-    const { favoritesList, contentAlbum } = this.state;
-    const findMusic = contentAlbum.find((music) => music.trackId === trackId);
-    const isFavorite = favoritesList.includes(findMusic);
-    return isFavorite;
+    const { favoritesList } = this.state;
+    const findMusic = favoritesList.some((music) => music.trackId === trackId);
+    return findMusic;
   };
 
   render() {
