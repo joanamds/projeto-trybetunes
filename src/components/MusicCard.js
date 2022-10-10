@@ -6,7 +6,10 @@ class MusicCard extends Component {
     const { previewUrl, trackName, trackId,
       onFavoriteChange, isFavorite } = this.props;
     return (
-      <div key={ trackId }>
+      <div
+        className="music-card"
+        key={ trackId }
+      >
         <p>
           { trackName }
         </p>

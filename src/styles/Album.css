@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100;300&family=Megrim&display=swap') ;
+
+.album-info {
+  margin-left: 350px;
+}
+
+.album-info h3 {
+  margin-bottom: 50px;
+  text-align: justify;
+}
+
+.content-album {
+  background-color: #011b2f;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.music-card {
+  background-color: #3e414a;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 30px;
+  width: 500px;
+}
+
+.music-card p {
+  color: white;
+}
+
+.content-favorites {
+  margin-left: 350px;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import '../styles/Login.css';
 
 class Login extends Component {
   constructor() {
@@ -51,20 +52,24 @@ class Login extends Component {
     if (isLoading) return <Loading />;
     return (
       <div data-testid="page-login">
-        <h1>Login</h1>
-        <input
-          data-testid="login-name-input"
-          placeholder="Nome do usuário"
-          onChange={ this.onLoginChange }
-        />
-        <button
-          data-testid="login-submit-button"
-          type="button"
-          onClick={ this.onButtonClick }
-          disabled={ isDisabled }
-        >
-          Entrar
-        </button>
+        <div className="login-box">
+          <h2>Login</h2>
+          <input
+            className="login-input"
+            data-testid="login-name-input"
+            placeholder="Nome do usuário"
+            onChange={ this.onLoginChange }
+          />
+          <button
+            className="button-login"
+            data-testid="login-submit-button"
+            type="button"
+            onClick={ this.onButtonClick }
+            disabled={ isDisabled }
+          >
+            <h3>Entrar</h3>
+          </button>
+        </div>
       </div>
     );
   }

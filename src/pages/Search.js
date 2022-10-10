@@ -3,6 +3,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import AlbumCard from '../components/AlbumCard';
+import '../styles/Search.css';
 
 class Search extends Component {
   constructor() {
@@ -50,40 +51,46 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header data-testid="header-component" />
-        <input
-          data-testid="search-artist-input"
-          type="text"
-          placeholder="Nome do Artista"
-          onChange={ this.onSearchChange }
-        />
-        <button
-          data-testid="search-artist-button"
-          type="button"
-          disabled={ isDisabled }
-          onClick={ this.onSearchClick }
-        >
-          Procurar
-        </button>
+        <div className="search-item">
+          <input
+            className="search-input"
+            data-testid="search-artist-input"
+            type="text"
+            placeholder="Nome do Artista"
+            onChange={ this.onSearchChange }
+          />
+          <button
+            className="search-button"
+            data-testid="search-artist-button"
+            type="button"
+            disabled={ isDisabled }
+            onClick={ this.onSearchClick }
+          >
+            <p className="text-search-button">Procurar </p>
+          </button>
+        </div>
         <div className="album-list">
           {
             albumsList.length === 0
               ? <h3>Nenhum álbum foi encontrado</h3>
               : (
-                <div className="search-content">
+                <>
                   <h3>{ searchMessage }</h3>
-                  {
-                    albumsList.map((album) => (
-                      <AlbumCard
-                        key={ album.collectionId }
-                        artistId={ album.artistId }
-                        artistName={ album.artistName }
-                        artworkUrl100={ album.artworkUrl100 }
-                        collectionId={ album.collectionId }
-                        collectionName={ album.collectionName }
-                      />
-                    ))
-                  }
-                </div>)
+                  <div className="search-content">
+                    {
+                      albumsList.map((album) => (
+                        <AlbumCard
+                          key={ album.collectionId }
+                          artistId={ album.artistId }
+                          artistName={ album.artistName }
+                          artworkUrl100={ album.artworkUrl100 }
+                          collectionId={ album.collectionId }
+                          collectionName={ album.collectionName }
+                        />
+                      ))
+                    }
+                  </div>
+                </>)
           }
         </div>
       </div>

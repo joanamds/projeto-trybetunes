@@ -5,6 +5,7 @@ import getMusics from '../services/musicsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import '../styles/Album.css';
 
 class Album extends Component {
   constructor() {
@@ -77,30 +78,32 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <img
-          src={ contentAlbum[0].artworkUrl100 }
-          alt={ contentAlbum[0].artistName }
-        />
-        <h1 data-testid="album-name">
-          { contentAlbum[0].collectionName }
-        </h1>
-        <h2 data-testid="artist-name">
-          { contentAlbum[0].artistName }
-        </h2>
-        <div className="content-album">
-          { contentAlbum.map((track, index) => (
-            index !== 0
-            && (
-              <MusicCard
-                key={ track.trackId }
-                previewUrl={ track.previewUrl }
-                trackName={ track.trackName }
-                trackId={ track.trackId }
-                isFavorite={ this.isChecked(track.trackId) }
-                onFavoriteChange={ this.getMusicId }
-              />
-            )
-          ))}
+        <div className="album-info">
+          <img
+            src={ contentAlbum[0].artworkUrl100 }
+            alt={ contentAlbum[0].artistName }
+          />
+          <h2 data-testid="album-name">
+            { contentAlbum[0].collectionName }
+          </h2>
+          <h3 data-testid="artist-name">
+            { contentAlbum[0].artistName }
+          </h3>
+          <div className="content-album">
+            { contentAlbum.map((track, index) => (
+              index !== 0
+              && (
+                <MusicCard
+                  key={ track.trackId }
+                  previewUrl={ track.previewUrl }
+                  trackName={ track.trackName }
+                  trackId={ track.trackId }
+                  isFavorite={ this.isChecked(track.trackId) }
+                  onFavoriteChange={ this.getMusicId }
+                />
+              )
+            ))}
+          </div>
         </div>
       </div>
     );

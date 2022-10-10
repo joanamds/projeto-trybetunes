@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100;300&family=Megrim&display=swap') ;
+
+.search-input {
+  background: white;
+  border-radius: 25px;
+  border-width: 1px;
+  display: absolute;
+  height: 40px;
+  left: 504px;
+  margin-left: 100px;
+  opacity: 0.8;
+  width: 800px;
+}
+
+.search-button {
+  background: #1a3c48;
+  border-radius: 23px;
+  border-style: none;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.text-search-button {
+  align-content: center;
+  color: white;
+  font-family: Epilogue , cursive;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  height: 14px;
+  left: 933px;
+  text-transform: uppercase;
+  top: 112px;
+  width: 100px;
+}
+
+.search-item {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.search-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 350px;
+  margin-top: 50px;
+}
+
+.album-card {
+  background-color: #312235;
+  border-color: #312235;
+  border-radius: 8px;
+  border-style: outset;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin-top: 25px;
+  padding: 50px;
+  text-align: center;
+  width: 300px;
+}
+
+.link-album {
+  color: white;
+  cursor: pointer;
+  font-family: Epilogue , cursive;
+  font-size: 1.2rem;
+  height: 28px;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+

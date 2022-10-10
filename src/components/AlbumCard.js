@@ -8,18 +8,21 @@ class AlbumCard extends Component {
       collectionName, artworkUrl100 } = this.props;
 
     return (
-      <Link
-        to={ `/album/${collectionId}` }
-        data-testid={ `link-to-album-${collectionId}` }
-      >
-        <img src={ artworkUrl100 } alt={ collectionName } />
-        <h2>
-          { collectionName }
-        </h2>
-        <p className={ artistId }>
-          { artistName }
-        </p>
-      </Link>
+      <div className="album-card">
+        <Link
+          className="link-album"
+          to={ `/album/${collectionId}` }
+          data-testid={ `link-to-album-${collectionId}` }
+        >
+          <img src={ artworkUrl100 } alt={ collectionName } />
+          <p>
+            { collectionName }
+          </p>
+          <h3 className={ artistId }>
+            { artistName }
+          </h3>
+        </Link>
+      </div>
     );
   }
 }
