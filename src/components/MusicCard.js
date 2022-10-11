@@ -20,6 +20,8 @@ class MusicCard extends Component {
           <code>audio</code>
         </audio>
         <input
+          key={ trackId }
+          name={ trackName }
           data-testid={ `checkbox-music-${trackId}` }
           type="checkbox"
           onChange={ onFavoriteChange }
