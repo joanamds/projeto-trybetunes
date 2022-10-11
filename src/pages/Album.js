@@ -18,9 +18,9 @@ class Album extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getAlbumSongs();
-    this.getFavoritesSaved();
+  async componentDidMount() {
+    await this.getAlbumSongs();
+    await this.getFavoritesSaved();
   }
 
   getAlbumSongs = async () => {
@@ -32,41 +32,37 @@ class Album extends Component {
     });
   };
 
-  getMusicId = (event) => {
+  getMusicId = async (event) => {
     const { contentAlbum } = this.state;
     const value = event.target.parentNode.firstChild.innerText;
     const findTrack = contentAlbum.find((track) => track.trackName === value);
-    return this.getFavorite(findTrack);
+    console.log(findTrack);
+    await this.getFavorite(findTrack);
   };
 
   getFavorite = async (findTrack) => {
-    const { favoritesList } = this.state;
     this.setState({ isLoading: true });
     if (this.isChecked(findTrack.trackId)) {
-      const updateList = favoritesList
-        .filter((music) => music.trackId !== findTrack.trackId);
+      console.log('remove música');
       await removeSong(findTrack);
-      this.setState({
-        isLoading: false,
-        favoritesList: updateList,
-      });
     } else {
+      console.log('adiciona música');
       await addSong(findTrack);
-      this.setState((prevState) => ({
-        isLoading: false,
-        favoritesList: [...prevState.favoritesList, findTrack],
-      }));
     }
+    this.getFavoritesSaved();
   };
 
   getFavoritesSaved = async () => {
     const favorites = await getFavoriteSongs();
+    console.log('atualizando o array de favoritos');
     this.setState({
+      isLoading: false,
       favoritesList: favorites,
     });
   };
 
   isChecked = (trackId) => {
+    console.log('verifiquei o checked');
     const { favoritesList } = this.state;
     const findMusic = favoritesList.some((music) => music.trackId === trackId);
     return findMusic;
