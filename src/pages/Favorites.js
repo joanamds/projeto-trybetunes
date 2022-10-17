@@ -21,19 +21,15 @@ class Favorites extends Component {
     });
   }
 
-  getFavoriteId = (event) => {
-    const { favoritesList } = this.state;
-    const value = event.target.parentNode.firstChild.innerText;
-    const findTrack = favoritesList.find((track) => track.trackName === value);
-    return this.removeFavorite(findTrack);
-  };
-
-  removeFavorite = async (findTrack) => {
-    const { favoritesList } = this.state;
+  removeFavorite = async (event) => {
     this.setState({ isLoading: true });
-    const updateList = favoritesList
-      .filter((music) => music.trackId !== findTrack.trackId);
+    const { favoritesList } = this.state;
+    const { target } = event;
+    const { name } = target;
+    const findTrack = favoritesList.find((track) => track.trackName === name);
     await removeSong(findTrack);
+    const updateList = favoritesList
+      .filter((music) => music.trackName !== name);
     this.setState({
       isLoading: false,
       favoritesList: updateList,
@@ -55,23 +51,30 @@ class Favorites extends Component {
 
   render() {
     const { isLoading, favoritesList } = this.state;
-    if (isLoading) return <Loading />;
     return (
       <div data-testid="page-favorites">
         <Header />
-        <h1>Favorites</h1>
-        <div className="content-favorites">
-          { favoritesList.map((track) => (
-            <MusicCard
-              key={ track.trackId }
-              previewUrl={ track.previewUrl }
-              trackName={ track.trackName }
-              trackId={ track.trackId }
-              isFavorite={ this.isChecked(track.trackId) }
-              onFavoriteChange={ this.getFavoriteId }
-            />
-          ))}
-        </div>
+        {
+          isLoading
+            ? <Loading />
+            : (
+              <>
+                <h1>Favorites</h1>
+                <div className="content-favorites">
+                  { favoritesList.map((track) => (
+                    <MusicCard
+                      key={ track.trackId }
+                      previewUrl={ track.previewUrl }
+                      trackName={ track.trackName }
+                      trackId={ track.trackId }
+                      isFavorite={ this.isChecked(track.trackId) }
+                      onFavoriteChange={ this.removeFavorite }
+                    />
+                  ))}
+                </div>
+              </>
+            )
+        }
       </div>
     );
   }
