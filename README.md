@@ -1,4 +1,10 @@
-# :construction: README customizado em construção ! :construction:
+# :notes: Projeto TrybeTunes! :notes:
+
+Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar e listar álbuns e músicas de várias bandas e artistas. Também é possível ouvir uma preview de cada música! Também é possível adicionar as músicas favoritas em uma lista.
+
+#### Para termos acesso as listas de músicas, albuns e artistas fizemos o acesso a uma API do iTunes com os seguintes endpoints: 
+<li>Para pesquisar os albuns: https://itunes.apple.com/search?entity=album&term=${artistNameURL}&attribute=allArtistTerm</li>
+<li>Para pesquisar as músicas de um álbum específico: https://itunes.apple.com/lookup?id=${id}&entity=song</li>
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
 
