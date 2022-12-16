@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100;300&family=Megrim&display=swap') ;
 
 .header-content {
-  background-color: #1a3c48;
+  background-color: black;
   display: flex;
   flex-direction: column;
   height: 100%;

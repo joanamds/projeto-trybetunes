@@ -59,9 +59,9 @@ class Favorites extends Component {
             ? <Loading />
             : (
               <>
-                <h1>Favorites</h1>
+                <h1>Favorites &#127775;</h1>
                 <div className="content-favorites">
-                  { favoritesList.map((track) => (
+                  {favoritesList.map((track) => (
                     <MusicCard
                       key={ track.trackId }
                       previewUrl={ track.previewUrl }

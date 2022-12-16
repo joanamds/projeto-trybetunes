@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100;300&family=Megrim&display=swap') ;
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100;300&family=Raleway:wght@100;200;300;500&display=swap') ;
 
 body {
-  background-image: url('https://i.ytimg.com/vi/KuUS97EJ5vc/maxresdefault.jpg');
+  background-color: #1e1e1e;
 }
 
 .login-box {
   align-items: center;
-  background: #2e323e;
+  background: #181818;
   border-radius: 20px;
   box-shadow: 26px
     white;
@@ -20,16 +20,16 @@ body {
 }
 
 h1 {
-  color: #dfffff;
-  font-family: Megrim , cursive;
+  color: #ff285a;
+  font-family: Raleway , cursive;
   font-size: 50px;
-  font-weight: 1;
+  font-weight: 500;
   text-align: center;
 }
 
 h2 {
   color: #dfffff;
-  font-family: Megrim , cursive;
+  font-family: Raleway , cursive;
 }
 
 .login-input {
@@ -44,7 +44,7 @@ h2 {
 }
 
 .button-login {
-  background: #84544d;
+  background: #39f1e0;
   border-radius: 100px;
   cursor: pointer;
   height: 40px;

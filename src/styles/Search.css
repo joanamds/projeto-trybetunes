@@ -2,18 +2,23 @@
 
 .search-input {
   background: white;
+  border: 3px solid #ccc;
   border-radius: 25px;
-  border-width: 1px;
-  display: absolute;
+  box-sizing: border-box;
+  display: flex;
   height: 40px;
   left: 504px;
   margin-left: 100px;
-  opacity: 0.8;
+  outline: none;
   width: 800px;
 }
 
+.search-input:focus {
+  border: 3px solid #268ab9;
+}
+
 .search-button {
-  background: #1a3c48;
+  background: #2ecab8;
   border-radius: 23px;
   border-style: none;
   cursor: pointer;
@@ -49,8 +54,8 @@
 }
 
 .album-card {
-  background-color: #312235;
-  border-color: #312235;
+  background-color: #181818;
+  border-color: #181818;
   border-radius: 8px;
   border-style: outset;
   border-width: 1px;
