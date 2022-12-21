@@ -5,6 +5,9 @@ Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar
 #### Para termos acesso as listas de músicas, albuns e artistas fizemos o acesso a uma API do iTunes com os seguintes endpoints: 
 <li>Para pesquisar os albuns: https://itunes.apple.com/search?entity=album&term=${parametro-da-chamada-da-api}&attribute=allArtistTerm</li>
 <li>Para pesquisar as músicas de um álbum específico: https://itunes.apple.com/lookup?id=${parametro-da-chamada-da-api}&entity=song</li>
+<br />
+
+[Clique aqui para ver a aplicação](https://joanamds.github.io/projeto-trybetunes/)
 
 ### Gif mostrando a aplicação
 ![TrybeTunes](https://user-images.githubusercontent.com/106452876/208140429-9a7d3393-d9fb-463c-817e-fa5962b0e08a.gif)
