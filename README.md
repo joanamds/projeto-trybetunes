@@ -9,7 +9,6 @@ Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar
 
 [Clique aqui para ver a aplicação](https://joanamds.github.io/projeto-trybetunes/)
 
-### Gif mostrando a aplicação
 ![TrybeTunes](https://user-images.githubusercontent.com/106452876/208140429-9a7d3393-d9fb-463c-817e-fa5962b0e08a.gif)
 
 
