@@ -14,6 +14,27 @@ Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar
 
 OBS: Acabei por não desenvolver a tela de Perfil. 
 
+## Instalando Dependências
+> Frontend
+```bash
+cd src/
+npm install
+``` 
+## Executando aplicação
+* Para rodar o front-end:
+
+  ```
+    cd src/ && npm start
+  ```
+
+## Executando Testes
+
+* Para rodar todos os testes:
+
+  ```
+    npm test
+  ```
+
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
 
