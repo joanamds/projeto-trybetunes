@@ -7,7 +7,7 @@ Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar
 <li>Para pesquisar as músicas de um álbum específico: https://itunes.apple.com/lookup?id=${parametro-da-chamada-da-api}&entity=song</li>
 <br />
 
-## Técnologias usadas
+## Tecnologias usadas
 Front-end:
 > Desenvolvido usando: React, CSS3, HTML5, ES6
 
