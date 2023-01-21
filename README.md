@@ -2,7 +2,9 @@
 
 Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar e listar álbuns e músicas de várias bandas e artistas. Também é possível ouvir uma preview de cada música e adicionar as músicas favoritas em uma lista.
 
-#### Para termos acesso as listas de músicas, albuns e artistas fizemos o acesso a uma API do iTunes com os seguintes endpoints: 
+![TrybeTunes](https://user-images.githubusercontent.com/106452876/208140429-9a7d3393-d9fb-463c-817e-fa5962b0e08a.gif)
+
+## A API utilizada e seus endpoints
 <li>Para pesquisar os albuns: https://itunes.apple.com/search?entity=album&term=${parametro-da-chamada-da-api}&attribute=allArtistTerm</li>
 <li>Para pesquisar as músicas de um álbum específico: https://itunes.apple.com/lookup?id=${parametro-da-chamada-da-api}&entity=song</li>
 <br />
@@ -10,11 +12,6 @@ Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar
 ## Tecnologias usadas
 Front-end:
 > Desenvolvido usando: React, CSS3, HTML5, ES6
-
-[Clique aqui para ver a aplicação](https://joanamds.github.io/projeto-trybetunes/)
-
-![TrybeTunes](https://user-images.githubusercontent.com/106452876/208140429-9a7d3393-d9fb-463c-817e-fa5962b0e08a.gif)
-
 
 OBS: Acabei por não desenvolver a tela de Perfil. 
 
