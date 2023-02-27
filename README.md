@@ -1,4 +1,4 @@
-# :notes: Projeto TrybeTunes! :notes:
+# :notes: Projeto TrybeTunes!
 
 Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar e listar álbuns e músicas de várias bandas e artistas. Também é possível ouvir uma preview de cada música e adicionar as músicas favoritas em uma lista.
 
