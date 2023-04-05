@@ -1,8 +1,8 @@
-# :notes: Projeto TrybeTunes!
+# Projeto TrybeTunes :notes:
 
 Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar e listar álbuns e músicas de várias bandas e artistas. Também é possível ouvir uma preview de cada música e adicionar as músicas favoritas em uma lista.
 
-![TrybeTunes](https://user-images.githubusercontent.com/106452876/208140429-9a7d3393-d9fb-463c-817e-fa5962b0e08a.gif)
+[trybetunes.webm](https://user-images.githubusercontent.com/106452876/230174875-29d2fc8e-7b13-432f-afcb-7b7dc11b93d7.webm)
 
 ## A API utilizada e seus endpoints
 <li>Para pesquisar os albuns: https://itunes.apple.com/search?entity=album&term=${parametro-da-chamada-da-api}&attribute=allArtistTerm</li>
