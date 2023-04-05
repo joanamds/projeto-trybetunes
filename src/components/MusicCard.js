@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import '../styles/FavoriteIcon.css';
 
 class MusicCard extends Component {
   render() {
@@ -13,24 +15,29 @@ class MusicCard extends Component {
         <p>
           { trackName }
         </p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          {' '}
-          <code>audio</code>
-        </audio>
-        <label htmlFor={ trackId }>
-          <input
-            key={ trackId }
-            name={ trackName }
-            id={ trackId }
-            data-testid={ `checkbox-music-${trackId}` }
-            type="checkbox"
-            onChange={ onFavoriteChange }
-            checked={ isFavorite }
-          />
-          Favorita
-        </label>
+        <div className="audio-favorite">
+          <audio data-testid="audio-component" src={ previewUrl } controls>
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            {' '}
+            <code>audio</code>
+          </audio>
+          <label htmlFor={ trackId }>
+            <input
+              key={ trackId }
+              name={ trackName }
+              id={ trackId }
+              data-testid={ `checkbox-music-${trackId}` }
+              type="checkbox"
+              onChange={ onFavoriteChange }
+              checked={ isFavorite }
+              style={ { display: 'none' } }
+            />
+            { isFavorite
+              ? <FaHeart className="icon" />
+              : <FaRegHeart className="icon" />}
+          </label>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaHeart } from 'react-icons/fa';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
@@ -59,7 +60,10 @@ class Favorites extends Component {
             ? <Loading />
             : (
               <>
-                <h1>Favorites &#127775;</h1>
+                <h1>
+                  Favorites
+                  <FaHeart className="icon" />
+                </h1>
                 <div className="content-favorites">
                   {favoritesList.map((track) => (
                     <MusicCard

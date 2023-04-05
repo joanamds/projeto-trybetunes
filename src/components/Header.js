@@ -53,13 +53,13 @@ class Header extends Component {
         >
           Favoritas
         </Link>
-        <Link
+        {/* <Link
           className="header-link"
           to="/profile"
           data-testid="link-to-profile"
         >
           Perfil
-        </Link>
+        </Link> */}
       </header>
     );
   }

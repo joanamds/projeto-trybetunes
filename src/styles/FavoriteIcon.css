@@ -1,0 +1,10 @@
+.icon {
+  color: #1db954;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.audio-favorite {
+  align-items: center;
+  display: flex;
+}
