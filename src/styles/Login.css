@@ -37,21 +37,43 @@ h2 {
   border-radius: 100px;
   height: 40px;
   left: 250px;
+  outline: none;
   position: absolute;
   text-align: center;
   top: 120px;
   width: 400px;
 }
 
+.login-input:focus {
+  border: 3px solid #268ab9;
+  transition: 0.5s;
+}
+
+
 .button-login {
   background: #1db954;
   border-radius: 100px;
+  border-style: none;
   cursor: pointer;
   height: 40px;
   left: 250px;
   position: absolute;
   top: 180px;
   width: 400px;
+}
+
+.button-login:focus {
+  border-style: inset;
+  border-width: 1px;
+}
+
+.button-login:disabled {
+  background: lightgray;
+  cursor: default;
+}
+
+.button-login:not( [ disabled ] ):hover {
+  opacity: 0.2;
 }
 
 h3 {

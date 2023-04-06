@@ -15,6 +15,7 @@
 
 .search-input:focus {
   border: 3px solid #268ab9;
+  transition: 0.5s;
 }
 
 .search-button {
@@ -23,6 +24,20 @@
   border-style: none;
   cursor: pointer;
   margin-left: 30px;
+}
+
+.search-button:focus {
+  border-style: inset;
+  border-width: 1px;
+}
+
+.search-button:disabled {
+  background: lightgray;
+  cursor: default;
+}
+
+.search-button:not( [ disabled ] ):hover {
+  opacity: 0.2;
 }
 
 .text-search-button {
