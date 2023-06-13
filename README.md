@@ -49,7 +49,7 @@ Para fixarmos o conteúdo de React Router criamos uma aplicação para pesquisar
 Front-end:
 > Desenvolvido usando: React, CSS3, HTML5, ES6
 
-OBS: Acabei por não desenvolver a tela de Perfil. 
+:warning: OBS: Acabei por não desenvolver a tela de Perfil. 
 
 <!-- ## Executando Testes
 
