@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import AlbumCard from '../components/AlbumCard';
 import '../styles/Search.css';
+import pepe from '../images/pepe-music.gif'
 
 class Search extends Component {
   constructor() {
@@ -15,6 +16,7 @@ class Search extends Component {
       isLoading: false,
       albumsList: [],
       searchMessage: '',
+      notSearch: true
     };
   }
 
@@ -42,11 +44,12 @@ class Search extends Component {
       isLoading: false,
       albumsList: response,
       searchMessage: `Resultado de álbuns de: ${searchItem}`,
+      isSearch: false
     });
   };
 
   render() {
-    const { isDisabled, isLoading, albumsList, searchMessage } = this.state;
+    const { isDisabled, isLoading, albumsList, searchMessage, notSearch } = this.state;
     if (isLoading) return <Loading />;
     return (
       <div data-testid="page-search">
@@ -93,6 +96,14 @@ class Search extends Component {
                 </>)
           }
         </div>
+        {
+          notSearch && (
+                <div className="not-search-image">
+                  <img src={pepe} />
+                  <h3 className="not-search-title">Procure uma música ou um artista</h3>
+                </div>
+          )
+        }
       </div>
     );
   }

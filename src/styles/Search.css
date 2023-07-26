@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@100;300&family=Megrim&display=swap') ;
 
+.page-search {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 .search-input {
   background: white;
   border: 3px solid #ccc;
@@ -101,4 +107,17 @@
 .link-album:hover {
   transform: scale(1.1);
   transition: 0.5s;
+}
+
+.not-search-image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.not-search-title {
+  color: #1db954;
+  font-size: 24px;
+  margin-left: 50px;
 }
